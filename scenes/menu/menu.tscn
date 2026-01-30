@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://8kkdfh358w87"]
+[gd_scene load_steps=2 format=3 uid="uid://8kkdfh358w87"]
+
+[ext_resource type="Script" uid="uid://dmg0jtf00rb6r" path="res://scenes/menu/menu.gd" id="1_klgdb"]
 
 [node name="Menu" type="Panel"]
 anchors_preset = 15
@@ -6,6 +8,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_klgdb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -17,10 +20,12 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Untitled Game"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Play"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
