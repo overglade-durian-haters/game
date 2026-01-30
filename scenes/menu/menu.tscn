@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8kkdfh358w87"]
+[gd_scene load_steps=3 format=3 uid="uid://8kkdfh358w87"]
 
 [ext_resource type="Script" uid="uid://dmg0jtf00rb6r" path="res://scenes/menu/menu.gd" id="1_klgdb"]
+[ext_resource type="Material" uid="uid://ticmeo4nqnw0" path="res://assets/resources/shaders/pixelmaterial.tres" id="2_mcvr8"]
 
 [node name="Menu" type="Panel"]
 anchors_preset = 15
@@ -22,6 +23,7 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="VBoxContainer"]
+material = ExtResource("2_mcvr8")
 layout_mode = 2
 text = "Untitled Game"
 horizontal_alignment = 1

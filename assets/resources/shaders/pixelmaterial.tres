@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ticmeo4nqnw0"]
+
+[ext_resource type="Shader" uid="uid://bqba05a38wbkj" path="res://assets/resources/shaders/pixel.gdshader" id="1_17v8p"]
+
+[resource]
+shader = ExtResource("1_17v8p")
+shader_parameter/alpha_threshold = 0.5
