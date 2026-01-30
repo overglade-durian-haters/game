@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b1ma6lppmv7qs"]
+
+[ext_resource type="FontFile" uid="uid://dspt8oan81kdr" path="res://assets/fonts/Righteous-Regular.ttf" id="1_2wfrt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1pu2"]
+bg_color = Color(0.5882353, 0.7529412, 0.7176471, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wfrt"]
+bg_color = Color(0.027062122, 0.06907559, 0.10663129, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tbei"]
+bg_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
+Button/fonts/font = ExtResource("1_2wfrt")
+Button/styles/hover = SubResource("StyleBoxFlat_q1pu2")
+Button/styles/normal = SubResource("StyleBoxFlat_2wfrt")
+Label/fonts/font = ExtResource("1_2wfrt")
+Panel/styles/panel = SubResource("StyleBoxFlat_8tbei")
