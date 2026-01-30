@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b1ma6lppmv7qs"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b1ma6lppmv7qs"]
 
 [ext_resource type="FontFile" uid="uid://dspt8oan81kdr" path="res://assets/fonts/Righteous-Regular.ttf" id="1_2wfrt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wfrt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1pu2"]
 bg_color = Color(0.5882353, 0.7529412, 0.7176471, 1)
@@ -8,9 +10,25 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wfrt"]
 bg_color = Color(0.027062122, 0.06907559, 0.10663129, 1)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1owqq"]
+bg_color = Color(0.83137256, 0.8745098, 0.78039217, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tbei"]
 bg_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
@@ -18,8 +36,12 @@ bg_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
+Button/colors/font_hover_pressed_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
+Button/colors/font_pressed_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
 Button/fonts/font = ExtResource("1_2wfrt")
+Button/styles/focus = SubResource("StyleBoxEmpty_2wfrt")
 Button/styles/hover = SubResource("StyleBoxFlat_q1pu2")
 Button/styles/normal = SubResource("StyleBoxFlat_2wfrt")
+Button/styles/pressed = SubResource("StyleBoxFlat_1owqq")
 Label/fonts/font = ExtResource("1_2wfrt")
 Panel/styles/panel = SubResource("StyleBoxFlat_8tbei")

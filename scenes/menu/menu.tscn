@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://8kkdfh358w87"]
+[gd_scene load_steps=6 format=3 uid="uid://8kkdfh358w87"]
 
 [ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="1_e0arn"]
 [ext_resource type="Script" uid="uid://dmg0jtf00rb6r" path="res://scenes/menu/menu.gd" id="1_klgdb"]
 [ext_resource type="Material" uid="uid://ticmeo4nqnw0" path="res://assets/resources/shaders/pixelmaterial.tres" id="2_mcvr8"]
+[ext_resource type="Script" uid="uid://d4k8i13qxbesf" path="res://assets/resources/scripts/shift_button_up_slightly.gd" id="4_037ec"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0arn"]
 font_size = 24
@@ -44,11 +45,19 @@ theme_override_constants/separation = 10
 material = ExtResource("2_mcvr8")
 layout_mode = 2
 text = "play"
+script = ExtResource("4_037ec")
 
 [node name="Quit" type="Button" parent="VBoxContainer/Buttons"]
 material = ExtResource("2_mcvr8")
 layout_mode = 2
 text = "quit"
+script = ExtResource("4_037ec")
 
+[connection signal="button_down" from="VBoxContainer/Buttons/Play" to="VBoxContainer/Buttons/Play" method="_on_button_down"]
+[connection signal="mouse_entered" from="VBoxContainer/Buttons/Play" to="VBoxContainer/Buttons/Play" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Buttons/Play" to="VBoxContainer/Buttons/Play" method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="button_down" from="VBoxContainer/Buttons/Quit" to="VBoxContainer/Buttons/Quit" method="_on_button_down"]
+[connection signal="mouse_entered" from="VBoxContainer/Buttons/Quit" to="VBoxContainer/Buttons/Quit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Buttons/Quit" to="VBoxContainer/Buttons/Quit" method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Quit" to="." method="_on_quit_pressed"]
