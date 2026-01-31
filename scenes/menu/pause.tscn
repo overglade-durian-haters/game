@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://ticmeo4nqnw0" path="res://assets/resources/shaders/pixelmaterial.tres" id="1_4wejy"]
 [ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="2_1mvc1"]
 [ext_resource type="Script" uid="uid://nqdycs5pgds6" path="res://scenes/menu/pause.gd" id="3_1mso8"]
-[ext_resource type="Script" uid="uid://d4k8i13qxbesf" path="res://assets/resources/scripts/shift_button_up_slightly.gd" id="3_1mvc1"]
+[ext_resource type="Script" uid="uid://d4k8i13qxbesf" path="res://scripts/shift_button_up_slightly.gd" id="3_1mvc1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1mso8"]
 font_size = 24

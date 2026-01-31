@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://4wrlymgyrm41"]
+
+[ext_resource type="Script" uid="uid://bdx1fgnlnrm2p" path="res://scenes/game/tier.gd" id="2_850h1"]
+[ext_resource type="Material" uid="uid://ticmeo4nqnw0" path="res://assets/resources/shaders/pixelmaterial.tres" id="2_jr37t"]
+[ext_resource type="FontFile" uid="uid://dq1nhpf7cww06" path="res://assets/fonts/SpaceGrotesk-Bold.ttf" id="2_xgi6i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j67af"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_xgi6i"]
+
+[node name="tier" type="Node2D"]
+script = ExtResource("2_850h1")
+
+[node name="tierLabel" type="Label" parent="."]
+material = ExtResource("2_jr37t")
+offset_left = -256.0
+offset_top = -32.0
+offset_right = 256.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("2_xgi6i")
+text = "Perfect"
+label_settings = SubResource("LabelSettings_j67af")
+horizontal_alignment = 1
+
+[node name="timeOffset" type="Label" parent="."]
+material = ExtResource("2_jr37t")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -3.0
+offset_right = 256.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+0.001"
+label_settings = SubResource("LabelSettings_xgi6i")
+horizontal_alignment = 1
