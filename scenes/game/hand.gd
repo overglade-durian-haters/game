@@ -18,7 +18,7 @@ class_name GameHand
 @export var length: float = 0.8
 
 @onready var current_tick: int = initial_offset
-@onready var spb := 60 / bpm
+
 
 func _draw():
 	var from = Vector2.ZERO
@@ -28,7 +28,6 @@ func _draw():
 
 func tick():
 	current_tick = current_tick + stride
-	#rotation_degrees = 6 * current_tick
 	var rot_deg = 6 * current_tick
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)

@@ -21,7 +21,6 @@ func process():
 	for id in tick_count:
 		var hand = hands[id]
 		var next_tick = hand.time + 60 / hand.bpm * tick_count[id]
-		print(id, " ", next_tick)
 		if pos >= next_tick:
 			hands[id].tick()
 			tick_count[id] += 1

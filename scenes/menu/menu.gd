@@ -23,7 +23,9 @@ func _on_play_pressed() -> void:
 			},
 		],
 		"notes": [
-			{ "id": 1, "time": 4.0 }
+			{ "id": 1, "time": 3.5 },
+			{ "id": 2, "time": 7.5 },
+			{ "id": 2, "time": 11.5 },
 		]
 	}
 	GameState.music_path = "res://assets/audio/calibration.wav"
