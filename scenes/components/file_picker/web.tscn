@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6u4fp50yrcxi"]
+
+[ext_resource type="Script" uid="uid://d1nuww8d4kegx" path="res://scenes/components/file_picker/web.gd" id="1_t4yof"]
+
+[node name="Web" type="Node2D"]
+script = ExtResource("1_t4yof")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10000
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Please select a file."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ReopenButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Open dialog"
+
+[node name="CancelButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ReopenButton" to="." method="pick"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel"]

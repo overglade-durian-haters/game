@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dweiuwu61lyfe"]
+
+[ext_resource type="Script" uid="uid://d17ykw5adl1sp" path="res://scenes/components/file_picker/file_picker.gd" id="1_a7uwb"]
+[ext_resource type="PackedScene" uid="uid://bampfrfpgqrh2" path="res://scenes/components/file_picker/desktop.tscn" id="2_dvj0i"]
+[ext_resource type="PackedScene" uid="uid://b6u4fp50yrcxi" path="res://scenes/components/file_picker/web.tscn" id="3_ahsvl"]
+
+[node name="FilePicker" type="Node2D"]
+script = ExtResource("1_a7uwb")
+
+[node name="Desktop" parent="." instance=ExtResource("2_dvj0i")]
+
+[node name="Web" parent="." instance=ExtResource("3_ahsvl")]
+
+[connection signal="cancelled" from="Desktop" to="." method="_on_cancelled"]
+[connection signal="selected" from="Desktop" to="." method="_on_selected"]
+[connection signal="cancelled" from="Web" to="." method="_on_cancelled"]
+[connection signal="selected" from="Web" to="." method="_on_selected"]
