@@ -18,12 +18,13 @@ func pause() -> void:
 
 func unpause() -> void:
 	print("unpause")
-	get_tree().paused = false
+	#get_tree().paused = false
 	if tween: tween.kill()
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:x", -size.x, duration)
+	$"../countdown".call("start_countdown")
 	#tween.tween_property(self, "visible", false, 1)
 
 
