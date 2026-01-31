@@ -16,9 +16,9 @@ script = ExtResource("2_850h1")
 
 [node name="tierLabel" type="Label" parent="."]
 offset_left = -256.0
-offset_top = -74.0
+offset_top = -67.0
 offset_right = 256.0
-offset_bottom = -1.0
+offset_bottom = 6.0
 theme_override_fonts/font = ExtResource("2_xgi6i")
 text = "Perfect"
 label_settings = SubResource("LabelSettings_j67af")
