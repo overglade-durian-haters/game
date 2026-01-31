@@ -21,12 +21,11 @@ func _on_hit() -> void:
 	var note = notes[note_index]
 	var diff = conductor.playback_pos - Settings.offset/1000.0 - note["time"]
 	print(note, " ", diff, " ", note_index)
-	var index := 0
+	var index := -1
 	for t in tiers:
 		index += 1
 		if abs(diff) < t.get("threshold"):
 			print("judge: ", t)
-			_spawn_tier(t["tier"], diff, t["color"])
 			# stats stuff update
 			GameState.stats['score'] += t['score']
 			if index == tiers.size() - 1:
@@ -39,6 +38,7 @@ func _on_hit() -> void:
 			if index == 0:
 				GameState.stats['perfects'] += 1
 			note_index += 1
+			_spawn_tier(t["tier"], diff, t["color"])
 			break
 
 func _process(_delta: float) -> void:

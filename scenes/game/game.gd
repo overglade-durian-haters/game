@@ -39,10 +39,11 @@ func end(finished: bool) -> void:
 	if finished:
 		GameState.stats['finished'] = finished
 		GameState.stats['avg_offset'] = GameState.stats['total_offset'] / (GameState.stats['num_notes'] - GameState.stats['misses'])
-		GameState.stats['percentage_notes'] = (GameState.stats['num_notes'] - GameState.stats['misses']) / GameState.stats['num_notes']
-		GameState.stats['percentage_score'] = GameState.stats['score'] / (GameState.tiers[0]['score'] * GameState.stats['num_notes'])
+		GameState.stats['percentage_notes'] = (GameState.stats['num_notes'] - GameState.stats['misses']) / float(GameState.stats['num_notes'])
+		GameState.stats['percentage_score'] = GameState.stats['score'] / float(GameState.tiers[0]['score'] * GameState.stats['num_notes'])
 		GameState.stats['percentage_overall'] = GameState.stats['percentage_notes'] * 0.75 + GameState.stats['percentage_score'] * 0.25
 		GameState.stats['percentage_overall'] = clamp(GameState.stats['percentage_overall'], 0.0, 1.0)
+		print(GameState.stats)
 		$menus/summary.set_text(GameState.stats['percentage_overall'], GameState.stats['max_combo'], GameState.stats['combo'], GameState.stats['misses'])
 		$menus/summary.enter()
 	else:
