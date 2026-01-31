@@ -11,6 +11,9 @@ var tick_count: Dictionary[int, int] = {}
 
 func _draw():
 	draw_circle(Vector2.ZERO, radius, Color.WHITE, false, 5)
+	for i in range(12):
+		var direction = Vector2.from_angle(i * PI / 6)
+		draw_line(direction * radius, direction * radius * 0.95, Color.WHITE, 3)
 
 
 func process():

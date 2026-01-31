@@ -27,9 +27,8 @@ func _draw():
 
 
 func tick():
-	current_tick += stride
-	if current_tick >= 60:
-		current_tick -= 60
+	current_tick = ((current_tick + stride) % 60 + 60) % 60
+	rotation_degrees = 6 * current_tick
 	var rot_deg = 6 * current_tick
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)
