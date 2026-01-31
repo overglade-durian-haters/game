@@ -36,7 +36,7 @@ func spawn_hand(event: Dictionary):
 	hand.time = event["time"]
 	add_child(hand)
 	hands[id] = hand
-	tick_count[id] = 1
+	tick_count[id] = 0
 
 
 func modify_hand(event: Dictionary):
@@ -47,7 +47,7 @@ func modify_hand(event: Dictionary):
 	hand.bpm = event["bpm"]
 	hand.stride = event["stride"]
 	hand.time = event["time"]
-	tick_count[id] = 1
+	tick_count[id] = 0
 
 
 func remove_hand(id: int):
