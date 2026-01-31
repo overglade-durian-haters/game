@@ -30,14 +30,14 @@ func _on_button_down() -> void:
 
 func _up() -> void:
 	if tween: tween.kill()
-	tween = create_tween()
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position:y", up, duration)
+	#tween = create_tween()
+	#tween.set_trans(Tween.TRANS_EXPO)
+	#tween.set_ease(Tween.EASE_OUT)
+	#tween.tween_property(self, "position:y", up, duration)
 
 func _dn() -> void:
 	if tween: tween.kill()
-	tween = create_tween()
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position:y", origin, duration)
+	#tween = create_tween()
+	#tween.set_trans(Tween.TRANS_EXPO)
+	#tween.set_ease(Tween.EASE_OUT)
+	#tween.tween_property(self, "position:y", origin, duration)
