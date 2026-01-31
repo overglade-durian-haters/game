@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drk4c8wmp82ax" path="res://scenes/game/hands.gd" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://de5maxgl3tljw" path="res://scenes/game/game.gd" id="1_kelw5"]
-[ext_resource type="Script" uid="uid://dwsq1sriqp4io" path="res://scenes/game/input.gd" id="2_kelw5"]
+[ext_resource type="Script" path="res://scenes/game/input.gd" id="2_kelw5"]
 [ext_resource type="Script" uid="uid://s4j765e0is6s" path="res://scripts/conductor.gd" id="3_0sr1o"]
 [ext_resource type="Script" uid="uid://cy4axvv5kvnwb" path="res://scenes/game/notes.gd" id="3_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://dqsf0q8tcjq44" path="res://scenes/menu/pause.tscn" id="6_5i0tg"]
