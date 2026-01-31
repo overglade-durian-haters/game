@@ -9,7 +9,6 @@
 font_size = 24
 
 [node name="pause" type="Panel"]
-visible = false
 material = ExtResource("1_4wejy")
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -58,6 +57,6 @@ script = ExtResource("3_1mvc1")
 [connection signal="button_down" from="MarginContainer/VBoxContainer/buttons/resume" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_button_down"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/buttons/resume" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/buttons/resume" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_mouse_exited"]
-[connection signal="button_down" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_menu_button_down"]
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_menu_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_menu_mouse_exited"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/menu" method="_on_button_down"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/menu" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/menu" method="_on_mouse_exited"]
