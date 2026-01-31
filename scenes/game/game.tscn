@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfkc4a63t74qq"]
+[gd_scene load_steps=7 format=3 uid="uid://bfkc4a63t74qq"]
 
 [ext_resource type="Script" uid="uid://drk4c8wmp82ax" path="res://scenes/game/hands.gd" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://de5maxgl3tljw" path="res://scenes/game/game.gd" id="1_kelw5"]
-[ext_resource type="Script" path="res://scenes/game/input.gd" id="2_kelw5"]
+[ext_resource type="Script" uid="uid://dwsq1sriqp4io" path="res://scenes/game/input.gd" id="2_kelw5"]
 [ext_resource type="Script" uid="uid://s4j765e0is6s" path="res://scripts/conductor.gd" id="3_0sr1o"]
 [ext_resource type="Script" uid="uid://cy4axvv5kvnwb" path="res://scenes/game/notes.gd" id="3_lfrn8"]
+[ext_resource type="PackedScene" uid="uid://dqsf0q8tcjq44" path="res://scenes/menu/pause.tscn" id="6_5i0tg"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("conductor", "hands")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("conductor", "hands", "pause_menu")]
 script = ExtResource("1_kelw5")
 conductor = NodePath("Conductor")
 hands = NodePath("Hands")
+pause_menu = NodePath("CanvasLayer/pause")
 
 [node name="Input" type="Node" parent="."]
 script = ExtResource("2_kelw5")
@@ -42,3 +44,8 @@ grow_horizontal = 0
 
 [node name="tierSpawn" type="Marker2D" parent="."]
 position = Vector2(501, 223)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource("6_5i0tg")]
+visible = false

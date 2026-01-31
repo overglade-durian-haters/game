@@ -2,6 +2,7 @@ extends Node2D
 
 @export var conductor: Conductor
 @export var hands: GameHands
+@export var pause_menu: PauseMenu
 
 @onready var title = GameState.level["title"]
 @onready var events = GameState.level["events"]
@@ -29,3 +30,11 @@ func _process(_delta: float) -> void:
 				hands.remove_hand(event["id"])
 		event_index += 1
 	hands.process()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if get_tree().paused:
+			pause_menu.unpause()
+		else:
+			pause_menu.pause()

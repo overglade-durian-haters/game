@@ -4,15 +4,13 @@ var travel_dist := 20.0
 var fade_time := 0.25
 
 func _ready() -> void:
-	#elapsed_time += delta
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property(self, 'position:y', -travel_dist, fade_time)
 	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property($tierLabel, 'material:shader_parameter/alpha', 0.0, fade_time)
-	tween.tween_property($timeOffset, 'material:shader_parameter/alpha', 0.0, fade_time)
+	tween.tween_property(self, 'modulate:a', 0.0, fade_time)
 	tween.set_parallel(false)
 	tween.tween_callback(self.queue_free)
 

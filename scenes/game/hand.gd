@@ -13,7 +13,7 @@ class_name GameHand
 @export var time: float = 0.0
 
 @export var color: Color = Color.WHITE
-@export var width: float = 2.0
+@export var width: float = 4.0
 ## fraction of circle radius
 @export var length: float = 0.8
 

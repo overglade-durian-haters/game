@@ -38,6 +38,7 @@ Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
 Button/colors/font_hover_pressed_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
 Button/colors/font_pressed_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
+Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_2wfrt")
 Button/styles/focus = SubResource("StyleBoxEmpty_2wfrt")
 Button/styles/hover = SubResource("StyleBoxFlat_q1pu2")

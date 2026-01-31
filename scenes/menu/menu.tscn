@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d4k8i13qxbesf" path="res://scripts/shift_button_up_slightly.gd" id="4_037ec"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0arn"]
-font_size = 24
+font_size = 48
 
 [node name="Menu" type="Panel"]
 anchors_preset = 15
@@ -36,7 +36,7 @@ label_settings = SubResource("LabelSettings_e0arn")
 horizontal_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -47,7 +47,6 @@ text = "play"
 script = ExtResource("4_037ec")
 
 [node name="Quit" type="Button" parent="VBoxContainer/Buttons"]
-material = ExtResource("2_mcvr8")
 layout_mode = 2
 text = "quit"
 script = ExtResource("4_037ec")

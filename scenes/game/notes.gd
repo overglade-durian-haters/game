@@ -36,11 +36,13 @@ func _on_hit() -> void:
 		return
 	var note = notes[note_index]
 	var diff = note["time"] - conductor.playback_pos
+	print(note, " ", diff, " ", note_index)
 	for t in tiers:
 		if abs(diff) < t.get("threshold"):
+			print("judge: ", t)
 			_spawn_tier(t["tier"], diff, t["color"])
+			note_index += 1
 			break
-	note_index += 1
 
 func _spawn_tier(text: String, offset: float, color: Color) -> void:
 	var t = tier.instantiate()
