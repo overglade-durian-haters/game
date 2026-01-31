@@ -15,6 +15,7 @@ var tiers: Array[Dictionary] = [
 	_new_bracket("Okay", 0.095, 12, _rgb_to_color01(255, 245, 189)),
 	_new_bracket("Miss", 0.250, 0, _rgb_to_color01(210, 210, 210))
 ]
+var miss_tier = tiers[tiers.size() - 1]
 
 func _rgb_to_color01(r: float, g: float, b: float) -> Color:
 	return Color(r/255, g/255, b/255, 1.0)
@@ -35,7 +36,7 @@ func _on_hit() -> void:
 	if note_index >= notes.size():
 		return
 	var note = notes[note_index]
-	var diff = note["time"] - conductor.playback_pos
+	var diff = conductor.playback_pos - note["time"]
 	print(note, " ", diff, " ", note_index)
 	for t in tiers:
 		if abs(diff) < t.get("threshold"):
@@ -44,10 +45,17 @@ func _on_hit() -> void:
 			note_index += 1
 			break
 
+
+func _process(_delta: float) -> void:
+	while note_index < notes.size() and notes[note_index]["time"] <= conductor.playback_pos - miss_tier["threshold"]:
+		var note = notes[note_index]
+		var diff = conductor.playback_pos - note["time"]
+		_spawn_tier(miss_tier["tier"], diff, miss_tier["color"])
+		note_index += 1
+
+
 func _spawn_tier(text: String, offset: float, color: Color) -> void:
 	var t = tier.instantiate()
-	#t.fade_time = 0.25
-	#t.travel_dist = 20.0
 	t.set_text(text, offset)
 	t.set_color(color)
 	tier_spawn.add_child(t)
