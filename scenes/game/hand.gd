@@ -17,9 +17,8 @@ class_name GameHand
 ## fraction of circle radius
 @export var length: float = 0.8
 
-
 @onready var current_tick: int = initial_offset
-
+@onready var spb := 60 / bpm
 
 func _draw():
 	var from = Vector2.ZERO
@@ -31,4 +30,8 @@ func tick():
 	current_tick += stride
 	if current_tick >= 60:
 		current_tick -= 60
-	rotation_degrees = 6 * current_tick
+	var rot_deg = 6 * current_tick
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "rotation_degrees", rot_deg, spb)

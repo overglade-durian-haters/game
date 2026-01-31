@@ -4,11 +4,6 @@ var duration := 0.2
 
 var tween: Tween
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	await get_tree().process_frame
-	pause()
-
 func pause() -> void:
 	position.x = -size.x
 	visible = true
