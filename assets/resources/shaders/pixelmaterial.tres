@@ -5,3 +5,4 @@
 [resource]
 shader = ExtResource("1_17v8p")
 shader_parameter/alpha_threshold = 0.5
+shader_parameter/alpha = 1.0

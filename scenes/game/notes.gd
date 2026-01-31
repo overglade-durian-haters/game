@@ -44,8 +44,8 @@ func _on_hit() -> void:
 
 func _spawn_tier(text: String, offset: float, color: Color) -> void:
 	var t = tier.instantiate()
-	t.fade_time = 0.25
-	t.travel_dist = 120.0
+	#t.fade_time = 0.25
+	#t.travel_dist = 20.0
 	t.set_text(text, offset)
 	t.set_color(color)
 	tier_spawn.add_child(t)

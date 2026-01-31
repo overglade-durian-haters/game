@@ -1,7 +1,7 @@
 extends Button
 
 var distance := 2.0
-var duration := 0.3
+var duration := 0.4
 var tween: Tween
 
 var origin: float
