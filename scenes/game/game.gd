@@ -11,13 +11,14 @@ var event_index = 0
 
 
 func _ready() -> void:
+	conductor.volume_linear = Settings.master_volume * Settings.music_volume
 	var stream = AudioStreamWAV.load_from_file(GameState.music_path)
 	conductor.set_audio(stream)
 	conductor.unpause()
 
 
 func _process(_delta: float) -> void:
-	var pos = conductor.playback_pos
+	var pos = conductor.playback_pos - Settings.offset/1000.0
 	while event_index < events.size() and pos > events[event_index]["time"]:
 		var event = events[event_index]
 		print("EVENT ", event)

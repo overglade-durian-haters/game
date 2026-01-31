@@ -36,7 +36,7 @@ func _on_hit() -> void:
 	if note_index >= notes.size():
 		return
 	var note = notes[note_index]
-	var diff = conductor.playback_pos - note["time"]
+	var diff = conductor.playback_pos - Settings.offset/1000.0 - note["time"]
 	print(note, " ", diff, " ", note_index)
 	for t in tiers:
 		if abs(diff) < t.get("threshold"):
@@ -47,9 +47,9 @@ func _on_hit() -> void:
 
 
 func _process(_delta: float) -> void:
-	while note_index < notes.size() and notes[note_index]["time"] <= conductor.playback_pos - miss_tier["threshold"]:
+	while note_index < notes.size() and notes[note_index]["time"] <= conductor.playback_pos - Settings.offset/1000.0 - miss_tier["threshold"]:
 		var note = notes[note_index]
-		var diff = conductor.playback_pos - note["time"]
+		var diff = conductor.playback_pos - Settings.offset/1000.0 - note["time"]
 		_spawn_tier(miss_tier["tier"], diff, miss_tier["color"])
 		note_index += 1
 

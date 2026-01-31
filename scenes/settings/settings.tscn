@@ -1,0 +1,137 @@
+[gd_scene load_steps=6 format=3 uid="uid://8qr32kfs8w5x"]
+
+[ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="1_1slea"]
+[ext_resource type="Script" uid="uid://inwdy783248i" path="res://scenes/settings/settings.gd" id="1_tt6xx"]
+[ext_resource type="FontFile" uid="uid://dspt8oan81kdr" path="res://assets/fonts/Righteous-Regular.ttf" id="1_vu5fi"]
+[ext_resource type="LabelSettings" uid="uid://xoqr4lf6ctl" path="res://scenes/settings/label_settings_item.tres" id="2_tt6xx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1slea"]
+font = ExtResource("1_vu5fi")
+font_size = 48
+
+[node name="Settings" type="Panel" node_paths=PackedStringArray("master", "master_label", "music", "music_label", "hitsound", "hitsound_label", "offset")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1slea")
+script = ExtResource("1_tt6xx")
+master = NodePath("VBoxContainer/GridContainer/Master")
+master_label = NodePath("VBoxContainer/GridContainer/MasterLabel")
+music = NodePath("VBoxContainer/GridContainer/Music")
+music_label = NodePath("VBoxContainer/GridContainer/MusicLabel")
+hitsound = NodePath("VBoxContainer/GridContainer/Hitsound")
+hitsound_label = NodePath("VBoxContainer/GridContainer/HitsoundLabel")
+offset = NodePath("VBoxContainer/GridContainer/Offset")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_1slea")
+
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+text = "Back to menu"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Master volume"
+label_settings = ExtResource("2_tt6xx")
+
+[node name="Master" type="HSlider" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MasterLabel" type="Label" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "100%"
+label_settings = ExtResource("2_tt6xx")
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Music volume"
+label_settings = ExtResource("2_tt6xx")
+
+[node name="Music" type="HSlider" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "100%"
+label_settings = ExtResource("2_tt6xx")
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Hitsound volume"
+label_settings = ExtResource("2_tt6xx")
+
+[node name="Hitsound" type="HSlider" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="HitsoundLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "100%"
+label_settings = ExtResource("2_tt6xx")
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Audio offset"
+label_settings = ExtResource("2_tt6xx")
+
+[node name="Offset" type="SpinBox" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+min_value = -1000.0
+max_value = 1000.0
+
+[node name="Label5" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "ms"
+label_settings = ExtResource("2_tt6xx")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/Master" to="." method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/Music" to="." method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/Hitsound" to="." method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/Offset" to="." method="_on_value_changed"]

@@ -17,7 +17,7 @@ func _draw():
 
 
 func process():
-	var pos = conductor.playback_pos
+	var pos = conductor.playback_pos - Settings.offset/1000.0
 	for id in tick_count:
 		var hand = hands[id]
 		var next_tick = hand.time + 60 / hand.bpm * tick_count[id]

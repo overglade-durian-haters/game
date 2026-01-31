@@ -46,6 +46,11 @@ layout_mode = 2
 text = "play"
 script = ExtResource("4_037ec")
 
+[node name="Settings" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+text = "settings"
+script = ExtResource("4_037ec")
+
 [node name="Quit" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
 text = "quit"
@@ -55,6 +60,7 @@ script = ExtResource("4_037ec")
 [connection signal="mouse_entered" from="VBoxContainer/Buttons/Play" to="VBoxContainer/Buttons/Play" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Buttons/Play" to="VBoxContainer/Buttons/Play" method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="button_down" from="VBoxContainer/Buttons/Quit" to="VBoxContainer/Buttons/Quit" method="_on_button_down"]
 [connection signal="mouse_entered" from="VBoxContainer/Buttons/Quit" to="VBoxContainer/Buttons/Quit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Buttons/Quit" to="VBoxContainer/Buttons/Quit" method="_on_mouse_exited"]

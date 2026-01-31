@@ -32,5 +32,9 @@ func _on_play_pressed() -> void:
 	SceneManager.change_scene("game")
 
 
+func _on_settings_pressed() -> void:
+	SceneManager.change_scene("settings")
+
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
