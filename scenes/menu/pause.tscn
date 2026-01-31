@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqsf0q8tcjq44"]
+
+[ext_resource type="Material" uid="uid://ticmeo4nqnw0" path="res://assets/resources/shaders/pixelmaterial.tres" id="1_4wejy"]
+[ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="2_1mvc1"]
+[ext_resource type="Script" uid="uid://nqdycs5pgds6" path="res://scenes/menu/pause.gd" id="3_1mso8"]
+[ext_resource type="Script" uid="uid://d4k8i13qxbesf" path="res://assets/resources/scripts/shift_button_up_slightly.gd" id="3_1mvc1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1mso8"]
+font_size = 24
+
+[node name="pause" type="Panel"]
+visible = false
+material = ExtResource("1_4wejy")
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 128.0
+grow_vertical = 2
+theme = ExtResource("2_1mvc1")
+script = ExtResource("3_1mso8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 128.0
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+material = ExtResource("1_4wejy")
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_1mso8")
+horizontal_alignment = 1
+
+[node name="buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="resume" type="Button" parent="MarginContainer/VBoxContainer/buttons"]
+material = ExtResource("1_4wejy")
+layout_mode = 2
+text = "resume"
+script = ExtResource("3_1mvc1")
+
+[node name="menu" type="Button" parent="MarginContainer/VBoxContainer/buttons"]
+material = ExtResource("1_4wejy")
+layout_mode = 2
+text = "main menu"
+script = ExtResource("3_1mvc1")
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/buttons/resume" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_button_down"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/buttons/resume" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/buttons/resume" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_mouse_exited"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_menu_button_down"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_menu_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/buttons/menu" to="MarginContainer/VBoxContainer/buttons/resume" method="_on_menu_mouse_exited"]

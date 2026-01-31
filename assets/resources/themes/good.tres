@@ -45,3 +45,4 @@ Button/styles/normal = SubResource("StyleBoxFlat_2wfrt")
 Button/styles/pressed = SubResource("StyleBoxFlat_1owqq")
 Label/fonts/font = ExtResource("1_2wfrt")
 Panel/styles/panel = SubResource("StyleBoxFlat_8tbei")
+VBoxContainer/constants/separation = 10

@@ -34,3 +34,15 @@ func _dn() -> void:
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:y", origin, duration)
+
+
+func _on_menu_button_down() -> void:
+	pass # Replace with function body.
+
+
+func _on_menu_mouse_entered() -> void:
+	pass # Replace with function body.
+
+
+func _on_menu_mouse_exited() -> void:
+	pass # Replace with function body.
