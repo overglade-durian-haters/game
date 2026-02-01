@@ -2,6 +2,8 @@ extends Node
 
 var level: Dictionary
 var music_path: String = "res://assets/audio/calibration.wav"
+var hand_tween_time: float = 0.2
+
 
 var tiers: Array[Dictionary] = [
 	_new_bracket("Perfect", 0.016, 100, _rgb_to_color01(216, 184, 255)),

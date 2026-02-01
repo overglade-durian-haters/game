@@ -15,7 +15,7 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.35156304, 0.35156283, 0.35156286, 0.6)
+bg_color = Color(0.37470913, 0.33858645, 0.38709688, 0.6)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -47,16 +47,6 @@ script = ExtResource("1_7h61r")
 conductor = NodePath("../Conductor")
 
 [node name="Camera2D" type="Camera2D" parent="Hands"]
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
-grow_horizontal = 0
 
 [node name="tierSpawn" type="Marker2D" parent="."]
 position = Vector2(501, 223)

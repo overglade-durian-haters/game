@@ -32,4 +32,4 @@ func tick():
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "rotation_degrees", rot_deg, 0.2)
+	tween.tween_property(self, "rotation_degrees", rot_deg, GameState.hand_tween_time)

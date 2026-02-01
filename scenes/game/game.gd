@@ -26,12 +26,20 @@ var stats: Dictionary = {
 }
 
 func _ready() -> void:
+	%fadeout.size.y = get_viewport().size.y
+	%fadeout.visible = true
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(%fadeout, "size:y", 0, 0.2)
+	tween.tween_callback(_hide_fadeout)
 	stats['num_notes'] = events.size() + 1
 	conductor.volume_linear = Settings.master_volume * Settings.music_volume
 	var stream = AudioStreamWAV.load_from_file(GameState.music_path)
 	conductor.set_audio(stream)
 	conductor.unpause()
 
+func _hide_fadeout() -> void: %fadeout.visible = false
 
 func _process(_delta: float) -> void:
 	if ended:
