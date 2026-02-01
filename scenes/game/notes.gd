@@ -3,6 +3,7 @@ extends Node
 @export var input: GameInput
 @export var conductor: Conductor
 @export var tier_spawn: Marker2D
+@export var game: Node2D
 const tier := preload("res://scenes/game/tier.tscn")
 
 @onready var notes: Array = GameState.level["notes"].duplicate()
@@ -27,16 +28,16 @@ func _on_hit() -> void:
 		if abs(diff) < t.get("threshold"):
 			print("judge: ", t)
 			# stats stuff update
-			GameState.stats['score'] += t['score']
+			game.stats['score'] += t['score']
 			if index == tiers.size() - 1:
-				GameState.stats['combo'] = 0
-				GameState.stats['misses'] += 1
+				game.stats['combo'] = 0
+				game.stats['misses'] += 1
 			else:
-				GameState.stats['combo'] += 1
-				if GameState.stats['max_combo'] < GameState.stats['combo']: GameState.stats['max_combo'] = GameState.stats['combo']
-				GameState.stats['total_offset'] += diff
+				game.stats['combo'] += 1
+				if game.stats['max_combo'] < game.stats['combo']: game.stats['max_combo'] = game.stats['combo']
+				game.stats['total_offset'] += diff
 			if index == 0:
-				GameState.stats['perfects'] += 1
+				game.stats['perfects'] += 1
 			note_index += 1
 			_spawn_tier(t["tier"], diff, t["color"])
 			break

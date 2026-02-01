@@ -31,11 +31,12 @@ pause_menu = NodePath("menus/pause")
 [node name="Input" type="Node" parent="."]
 script = ExtResource("2_kelw5")
 
-[node name="Notes" type="Node" parent="." node_paths=PackedStringArray("input", "conductor", "tier_spawn")]
+[node name="Notes" type="Node" parent="." node_paths=PackedStringArray("input", "conductor", "tier_spawn", "game")]
 script = ExtResource("3_lfrn8")
 input = NodePath("../Input")
 conductor = NodePath("../Conductor")
 tier_spawn = NodePath("../tierSpawn")
+game = NodePath("..")
 
 [node name="Conductor" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_0sr1o")

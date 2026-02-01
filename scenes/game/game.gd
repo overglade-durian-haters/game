@@ -10,8 +10,23 @@ extends Node2D
 var event_index = 0
 var ended: bool
 
+var stats: Dictionary = {
+	'score' = 0,
+	'max_combo' = 0,
+	'perfects' = 0,
+	'combo' = 0,
+	'misses' = 0,
+	'total_offset' = 0.0,
+	'num_notes' = 0,
+	'avg_offset' = 0.0,
+	'finished' = false,
+	'percentage_notes' = 0.0,
+	'percentage_score' = 0.0,
+	'percentage_overall' = 0.0
+}
+
 func _ready() -> void:
-	GameState.stats['num_notes'] = events.size() + 1
+	stats['num_notes'] = events.size() + 1
 	conductor.volume_linear = Settings.master_volume * Settings.music_volume
 	var stream = AudioStreamWAV.load_from_file(GameState.music_path)
 	conductor.set_audio(stream)
@@ -39,14 +54,14 @@ func _process(_delta: float) -> void:
 
 func end(finished: bool) -> void:
 	if finished:
-		GameState.stats['finished'] = finished
-		GameState.stats['avg_offset'] = GameState.stats['total_offset'] / (GameState.stats['num_notes'] - GameState.stats['misses'])
-		GameState.stats['percentage_notes'] = (GameState.stats['num_notes'] - GameState.stats['misses']) / float(GameState.stats['num_notes'])
-		GameState.stats['percentage_score'] = GameState.stats['score'] / float(GameState.tiers[0]['score'] * GameState.stats['num_notes'])
-		GameState.stats['percentage_overall'] = GameState.stats['percentage_notes'] * 0.75 + GameState.stats['percentage_score'] * 0.25
-		GameState.stats['percentage_overall'] = clamp(GameState.stats['percentage_overall'], 0.0, 1.0)
-		print("final stats:", GameState.stats)
-		$menus/summary.set_text(GameState.stats['percentage_overall'], GameState.stats['max_combo'], GameState.stats['combo'], GameState.stats['misses'])
+		stats['finished'] = finished
+		stats['avg_offset'] = stats['total_offset'] / (stats['num_notes'] - stats['misses'])
+		stats['percentage_notes'] = (stats['num_notes'] - stats['misses']) / float(stats['num_notes'])
+		stats['percentage_score'] = stats['score'] / float(GameState.tiers[0]['score'] * stats['num_notes'])
+		stats['percentage_overall'] = stats['percentage_notes'] * 0.75 + stats['percentage_score'] * 0.25
+		stats['percentage_overall'] = clamp(stats['percentage_overall'], 0.0, 1.0)
+		print("final stats:", stats)
+		$menus/summary.set_text(stats['percentage_overall'], stats['max_combo'], stats['combo'], stats['misses'])
 		$menus/summary.enter()
 	else:
 		var size = %fadeout.size.y

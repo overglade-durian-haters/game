@@ -3,7 +3,7 @@ extends Panel
 var duration = 1.5
 
 func _on_menubutton_button_up() -> void:
-	SceneManager.change_scene("menu")
+	$"../..".end(false)
 
 func enter() -> void:
 	global_position.y = -size.y
