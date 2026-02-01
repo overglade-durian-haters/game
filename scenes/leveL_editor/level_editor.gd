@@ -26,4 +26,5 @@ func _on_back_pressed() -> void:
 
 func _on_preview_pressed() -> void:
 	GameState.level = serializer.serialize()
+	GameState.editor_count += 1
 	SceneManager.change_scene("game")

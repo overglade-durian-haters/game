@@ -80,5 +80,9 @@ func end(finished: bool) -> void:
 		tween.set_ease(Tween.EASE_OUT)
 		tween.tween_property(%fadeout, "size:y", size, 0.2)
 		await tween.finished
-		SceneManager.change_scene("menu")
+		if GameState.editor_count:
+			GameState.editor_count -= 1
+			SceneManager.change_scene("level_editor")
+		else:
+			SceneManager.change_scene("menu")
 	ended = true

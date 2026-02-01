@@ -2,7 +2,9 @@ extends Node
 
 var level: Dictionary
 var music_path: String = "res://assets/audio/calibration.wav"
-var hand_tween_time: float = 0.2
+var hand_tween_time: float = 0.05
+
+var editor_count := 0
 
 
 var tiers: Array[Dictionary] = [
