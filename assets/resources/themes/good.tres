@@ -1,7 +1,14 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://b1ma6lppmv7qs"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://b1ma6lppmv7qs"]
 
 [ext_resource type="FontFile" uid="uid://dspt8oan81kdr" path="res://assets/fonts/Righteous-Regular.ttf" id="1_2wfrt"]
 [ext_resource type="FontFile" uid="uid://dq1nhpf7cww06" path="res://assets/fonts/SpaceGrotesk-Bold.ttf" id="2_8tbei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxt4s"]
+bg_color = Color(0.06879826, 0.06879829, 0.06879823, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wfrt"]
 
@@ -121,6 +128,7 @@ Button/colors/font_hover_pressed_color = Color(0.02745098, 0.07058824, 0.1058823
 Button/colors/font_pressed_color = Color(0.02745098, 0.07058824, 0.105882354, 1)
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_2wfrt")
+Button/styles/disabled = SubResource("StyleBoxFlat_jxt4s")
 Button/styles/focus = SubResource("StyleBoxEmpty_2wfrt")
 Button/styles/hover = SubResource("StyleBoxFlat_q1pu2")
 Button/styles/normal = SubResource("StyleBoxFlat_2wfrt")

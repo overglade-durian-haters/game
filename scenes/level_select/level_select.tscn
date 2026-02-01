@@ -22,7 +22,7 @@ anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = 40.0
 offset_right = -40.0
-offset_bottom = -40.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
@@ -44,9 +44,14 @@ text = " Main Menu "
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(600, 0)
+custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 3
