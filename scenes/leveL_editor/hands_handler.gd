@@ -96,7 +96,7 @@ func update_children():
 		hand_map[hand["id"]] = child
 		hands_events.append({ "type": "start", "hand_id": hand["id"], "time": hand["start_time"] })
 		hands_events.append({ "type": "end", "hand_id": hand["id"], "time": hand["end_time"] })
-		var beat = 0
+		var beat = 1
 		var time = hand["start_time"] + 60.0/hand["bpm"]
 		while time < hand["end_time"]:
 			hands_events.append({ "type": "tick", "hand_id": hand["id"], "time": time })

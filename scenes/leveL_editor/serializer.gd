@@ -30,7 +30,7 @@ func serialize():
 					"stride": hand["stride"],
 					"initial_offset": hand["initial_offset"]
 				})
-				positions[event["hand_id"]] = int(hand["initial_offset"])
+				positions[event["hand_id"]] = int(hand["initial_offset"]) + hand["stride"]
 				just_spawned.append(hand["id"])
 			"end":
 				events.append({
@@ -44,6 +44,7 @@ func serialize():
 				positions[hand["id"]] = ((int(positions[hand["id"]] + hand["stride"]) % 60) + 60) % 60
 				print("PP: ", positions)
 		if i == hands.hands_events.size()-1 or event["time"] != hands.hands_events[i+1]["time"]:
+			print("check collisions ", just_spawned)
 			var found := false
 			for note1 in positions:
 				for note2 in positions:
