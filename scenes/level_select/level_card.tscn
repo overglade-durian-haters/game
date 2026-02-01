@@ -15,6 +15,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [node name="level_card" type="Panel"]
+custom_minimum_size = Vector2(416, 560)
 offset_right = 416.0
 offset_bottom = 560.0
 theme = ExtResource("1_hwacb")
@@ -69,6 +70,7 @@ stretch_mode = 4
 
 [node name="icon" type="TextureRect" parent="VBoxContainer/Panel"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("2_8shjn")
 custom_minimum_size = Vector2(336, 336)
 layout_mode = 1
@@ -85,14 +87,14 @@ stretch_mode = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-text = "Level Name ABC"
+text = "Choose a level"
 
 [node name="author" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 16
-text = "Author AB"
+text = "then start playing"
 
 [node name="spacer" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
