@@ -72,7 +72,7 @@ func end(finished: bool) -> void:
 		$menus/summary.set_text(stats['percentage_overall'], stats['max_combo'], stats['combo'], stats['misses'])
 		$menus/summary.enter()
 	else:
-		var size = %fadeout.size.y
+		var size = get_viewport().get_visible_rect().size.y
 		%fadeout.size.y = 0
 		%fadeout.visible = true
 		var tween = create_tween()

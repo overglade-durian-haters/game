@@ -23,7 +23,7 @@ text = "00:00.00 - 00:00.00"
 
 [node name="Info" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "60 BPM, +5 stride"
+text = "60 BPM, +5 stride, initial 0"
 
 [node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2

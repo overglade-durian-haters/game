@@ -6,6 +6,7 @@ extends CanvasLayer
 @export var end_input: Range
 @export var bpm_input: Range
 @export var stride_input: Range
+@export var initial_input: Range
 
 @export var close_button: Button
 
@@ -27,6 +28,7 @@ func open(hand: Dictionary):
 	end_input.value = hand["end_time"]
 	bpm_input.value = hand["bpm"]
 	stride_input.value = hand["stride"]
+	initial_input.value = hand["initial_offset"]
 	ignore_updates = false
 	
 	show()
@@ -37,7 +39,8 @@ func _on_edited(_value: float):
 		editing["start_time"] = start_input.value
 		editing["end_time"] = end_input.value
 		editing["bpm"] = bpm_input.value
-		editing["stride"] = stride_input.value
+		editing["stride"] = int(stride_input.value)
+		editing["initial_offset"] = int(initial_input.value)
 		updated.emit()
 
 

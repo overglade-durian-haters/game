@@ -21,6 +21,7 @@ SceneManager="*res://autoloads/scene_manager.gd"
 GameState="*res://autoloads/game_state.gd"
 Settings="*res://autoloads/settings.gd"
 Utils="*res://autoloads/utils.gd"
+GameFile="*res://autoloads/game_file.gd"
 
 [display]
 
@@ -28,6 +29,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=2
 window/stretch/mode="viewport"
+window/size/mode.editor=0
 
 [dotnet]
 

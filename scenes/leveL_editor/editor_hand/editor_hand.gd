@@ -6,6 +6,7 @@ class_name EditorHand
 @export var end_time: float = 1.0
 @export var bpm: float = 120.0
 @export var stride: int = 5
+@export var initial_offset: int = 0
 
 @export var times_label: Label
 @export var info_label: Label
@@ -19,7 +20,7 @@ const highlight_stylebox = preload("res://scenes/leveL_editor/editor_hand/editor
 
 func _ready() -> void:
 	times_label.text = Utils.format_timestamp(start_time) + " - " + Utils.format_timestamp(end_time)
-	info_label.text = str(roundf(bpm * 10) / 10) + " BPM, " + ("+" if stride > 0 else "") + str(stride) + " stride"
+	info_label.text = str(roundf(bpm * 10) / 10) + " BPM, " + ("+" if stride > 0 else "") + str(stride) + " stride, initial " + str(initial_offset)
 
 
 func set_highlight(highlight: bool):

@@ -1,4 +1,5 @@
 extends Control
+class_name FileSaver
 
 @onready var file_dialog = $Desktop
 @onready var block_layer = $Block

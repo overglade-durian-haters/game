@@ -17,3 +17,7 @@ func _on_change_music_pressed() -> void:
 func _on_music_picker_selected(path: String) -> void:
 	GameState.music_path = path
 	get_tree().reload_current_scene()
+
+
+func _on_back_pressed() -> void:
+	SceneManager.change_scene("menu")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ccpai1khv3p5i"]
+[gd_scene load_steps=19 format=3 uid="uid://ccpai1khv3p5i"]
 
 [ext_resource type="Script" uid="uid://o1cy8ag8n88v" path="res://scenes/leveL_editor/level_editor.gd" id="1_q16wl"]
 [ext_resource type="FontFile" uid="uid://dspt8oan81kdr" path="res://assets/fonts/Righteous-Regular.ttf" id="1_y4ir8"]
@@ -7,7 +7,10 @@
 [ext_resource type="Script" uid="uid://cr76davmx3pqj" path="res://scenes/leveL_editor/hands_handler.gd" id="4_qcvlc"]
 [ext_resource type="PackedScene" uid="uid://dweiuwu61lyfe" path="res://scenes/components/file_picker/file_picker.tscn" id="4_tt74g"]
 [ext_resource type="Texture2D" uid="uid://2novltl7k450" path="res://assets/images/icon_backward.png" id="5_4lwdp"]
+[ext_resource type="Script" uid="uid://dhnu87p33tnyw" path="res://scenes/leveL_editor/serializer.gd" id="5_e2nhn"]
+[ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="6_bp8el"]
 [ext_resource type="Texture2D" uid="uid://caredmgq7hhy4" path="res://assets/images/icon_play.png" id="6_tt74g"]
+[ext_resource type="PackedScene" uid="uid://c1ieaag3h73tg" path="res://scenes/components/file_saver/file_saver.tscn" id="7_d1u2b"]
 [ext_resource type="Texture2D" uid="uid://bec0qxneg27f6" path="res://assets/images/icon_forward.png" id="7_u3cbq"]
 [ext_resource type="Script" uid="uid://c2xmsppaarupu" path="res://scenes/leveL_editor/edit.gd" id="10_qcvlc"]
 
@@ -58,7 +61,15 @@ bpm_input = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents/
 edit_handler = NodePath("../Edit")
 container = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents")
 
+[node name="Serializer" type="Node" parent="." node_paths=PackedStringArray("hands", "level_saver")]
+script = ExtResource("5_e2nhn")
+hands = NodePath("../HandsHandler")
+level_saver = NodePath("../LevelSaver")
+
 [node name="MusicPicker" parent="." instance=ExtResource("4_tt74g")]
+
+[node name="LevelSaver" parent="." instance=ExtResource("7_d1u2b")]
+layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -88,10 +99,37 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents"]
+layout_mode = 2
+theme = ExtResource("6_bp8el")
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4"]
 layout_mode = 2
 text = "Level editor"
 label_settings = SubResource("LabelSettings_q16wl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Save" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/HBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Back" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Back to menu"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents"]
 layout_mode = 2
@@ -164,7 +202,7 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Add hand"
 
-[node name="Edit" type="CanvasLayer" parent="." node_paths=PackedStringArray("conductor", "start_input", "end_input", "bpm_input", "stride_input", "close_button")]
+[node name="Edit" type="CanvasLayer" parent="." node_paths=PackedStringArray("conductor", "start_input", "end_input", "bpm_input", "stride_input", "initial_input", "close_button")]
 visible = false
 script = ExtResource("10_qcvlc")
 conductor = NodePath("../Conductor")
@@ -172,6 +210,7 @@ start_input = NodePath("Panel/VBoxContainer/GridContainer/Start")
 end_input = NodePath("Panel/VBoxContainer/GridContainer/End")
 bpm_input = NodePath("Panel/VBoxContainer/GridContainer/BPM")
 stride_input = NodePath("Panel/VBoxContainer/GridContainer/Stride")
+initial_input = NodePath("Panel/VBoxContainer/GridContainer/Initial")
 close_button = NodePath("Panel/VBoxContainer/HBoxContainer/Close")
 
 [node name="Panel" type="Panel" parent="Edit"]
@@ -252,6 +291,15 @@ min_value = -59.0
 max_value = 59.0
 value = 5.0
 
+[node name="Label5" type="Label" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Initial"
+label_settings = SubResource("LabelSettings_e2nhn")
+
+[node name="Initial" type="SpinBox" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+max_value = 59.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Edit/Panel/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -261,6 +309,8 @@ layout_mode = 2
 text = "Close"
 
 [connection signal="selected" from="MusicPicker" to="." method="_on_music_picker_selected"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/HBoxContainer/Save" to="Serializer" method="_on_save_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/Backward" to="MusicControl" method="_on_backward_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/PlayPuase" to="MusicControl" method="_on_play_puase_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/Forward" to="MusicControl" method="_on_forward_pressed"]
@@ -274,4 +324,5 @@ text = "Close"
 [connection signal="value_changed" from="Edit/Panel/VBoxContainer/GridContainer/End" to="Edit" method="_on_edited"]
 [connection signal="value_changed" from="Edit/Panel/VBoxContainer/GridContainer/BPM" to="Edit" method="_on_edited"]
 [connection signal="value_changed" from="Edit/Panel/VBoxContainer/GridContainer/Stride" to="Edit" method="_on_edited"]
+[connection signal="value_changed" from="Edit/Panel/VBoxContainer/GridContainer/Initial" to="Edit" method="_on_edited"]
 [connection signal="pressed" from="Edit/Panel/VBoxContainer/HBoxContainer/Close" to="Edit" method="_on_close_pressed"]

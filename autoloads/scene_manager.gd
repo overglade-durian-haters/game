@@ -3,7 +3,8 @@ extends Node
 const SCENES = {
 	"game": "res://scenes/game/game.tscn",
 	"menu": "res://scenes/menu/menu.tscn",
-	"settings": "res://scenes/settings/settings.tscn"
+	"settings": "res://scenes/settings/settings.tscn",
+	"level_editor": "res://scenes/leveL_editor/level_editor.tscn"
 }
 
 
