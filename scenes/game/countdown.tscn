@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dc01fvxkslqib"]
 
-[ext_resource type="Script" uid="uid://cyvs3ewrelsf4" path="res://scenes/menu/countdown.gd" id="1_lrf85"]
+[ext_resource type="Script" uid="uid://cyvs3ewrelsf4" path="res://scenes/game/countdown.gd" id="1_lrf85"]
 [ext_resource type="FontFile" uid="uid://dq1nhpf7cww06" path="res://assets/fonts/SpaceGrotesk-Bold.ttf" id="1_v313q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lrf85"]

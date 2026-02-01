@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="1_hkttv"]
 [ext_resource type="Material" uid="uid://ticmeo4nqnw0" path="res://assets/resources/shaders/pixelmaterial.tres" id="2_ugynv"]
-[ext_resource type="Script" uid="uid://oa88hiyrokhy" path="res://scenes/menu/summary.gd" id="3_hgtqp"]
+[ext_resource type="Script" uid="uid://oa88hiyrokhy" path="res://scenes/game/summary.gd" id="3_hgtqp"]
 [ext_resource type="FontFile" uid="uid://dq1nhpf7cww06" path="res://assets/fonts/SpaceGrotesk-Bold.ttf" id="3_ugynv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgtqp"]

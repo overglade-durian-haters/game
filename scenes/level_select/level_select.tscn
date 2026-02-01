@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://qakk0qf7kmtf"]
+
+[ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="1_vdlig"]
+[ext_resource type="Script" uid="uid://dpamq8kkpylmu" path="res://scenes/level_select/level_select.gd" id="2_3c84o"]
+[ext_resource type="PackedScene" uid="uid://ixu2q7xen242" path="res://scenes/level_select/level_item.tscn" id="3_7g617"]
+
+[node name="levelselect" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vdlig")
+script = ExtResource("2_3c84o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="toprow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="VBoxContainer/toprow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Level Select"
+
+[node name="menu" type="Button" parent="VBoxContainer/toprow"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+text = " Main Menu "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+
+[node name="levelscards" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="testitem" parent="VBoxContainer/ScrollContainer/levelscards" instance=ExtResource("3_7g617")]
+layout_mode = 2

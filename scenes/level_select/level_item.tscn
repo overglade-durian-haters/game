@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://ixu2q7xen242"]
+
+[ext_resource type="Theme" uid="uid://bwfj5dc26qhq8" path="res://scenes/level_select/level_item.tres" id="1_3hl6p"]
+[ext_resource type="Texture2D" uid="uid://dj7mrrr3l8jgv" path="res://icon.svg" id="2_3hl6p"]
+[ext_resource type="Material" uid="uid://ticmeo4nqnw0" path="res://assets/resources/shaders/pixelmaterial.tres" id="2_34p2k"]
+[ext_resource type="Script" uid="uid://y0k4ei7etsbn" path="res://scenes/level_select/level_item.gd" id="2_lfgad"]
+
+[node name="levelitem" type="Button"]
+custom_minimum_size = Vector2(500, 100)
+offset_right = 360.0
+offset_bottom = 64.0
+theme = ExtResource("1_3hl6p")
+script = ExtResource("2_lfgad")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 342.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="icon" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+material = ExtResource("2_34p2k")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("2_3hl6p")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="title" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level Name ABC"
+
+[node name="author" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Author AB"
