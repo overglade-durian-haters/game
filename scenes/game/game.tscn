@@ -73,7 +73,6 @@ position = Vector2(501, 223)
 position = Vector2(1200, 688)
 emitting = false
 amount = 200
-texture = ExtResource("10_4j704")
 lifetime = 4.0
 one_shot = true
 explosiveness = 0.96
@@ -91,17 +90,13 @@ angle_min = -720.0
 scale_amount_min = 0.8
 scale_amount_max = 1.2
 color = Color(0, 2.594, 4.005, 1)
-color_ramp = SubResource("Gradient_4j704")
-color_initial_ramp = SubResource("Gradient_kp23o")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
-hue_variation_curve = SubResource("Curve_5jirj")
 
 [node name="confetti2" type="CPUParticles2D" parent="."]
 position = Vector2(-224, 672)
 emitting = false
 amount = 200
-texture = ExtResource("10_4j704")
 lifetime = 4.0
 one_shot = true
 explosiveness = 0.97
@@ -119,11 +114,8 @@ angle_min = -720.0
 scale_amount_min = 0.8
 scale_amount_max = 1.2
 color = Color(0, 2.594, 4.005, 1)
-color_ramp = SubResource("Gradient_4j704")
-color_initial_ramp = SubResource("Gradient_kp23o")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
-hue_variation_curve = SubResource("Curve_5jirj")
 
 [node name="menus" type="CanvasLayer" parent="."]
 process_mode = 3

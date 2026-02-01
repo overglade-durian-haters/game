@@ -97,7 +97,7 @@ func end(finished: bool) -> void:
 		stats['percentage_notes'] = (stats['num_notes'] - stats['misses']) / float(stats['num_notes'])
 		stats['percentage_score'] = stats['score'] / float(GameState.tiers[0]['score'] * stats['num_notes'])
 		stats['percentage_overall'] = stats['percentage_notes'] * 0.75 + stats['percentage_score'] * 0.25
-		stats['percentage_overall'] = stats['percentage_notes'] * 0.04 + stats['percentage_score'] * 0.01 + 0.95
+		#stats['percentage_overall'] = stats['percentage_notes'] * 0.04 + stats['percentage_score'] * 0.01 + 0.95
 		stats['percentage_overall'] = clamp(stats['percentage_overall'], 0.0, 1.0)
 		print("final stats:", stats)
 		$menus/summary.set_text(stats['percentage_overall'], stats['max_combo'], stats['combo'], stats['misses'])
