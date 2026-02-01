@@ -10,14 +10,15 @@ func serialize():
 	var positions: Dictionary[int, int] = {}
 	var events = []
 	var notes = []
-	var note_times = []
+	#var note_times = []
 	
 	var hand_map = {}
 	for hand in hands.hands:
 		hand_map[hand["id"]] = hand
 	
 	print(hands.hands_events)
-	for event in hands.hands_events:
+	for i in hands.hands_events.size():
+		var event = hands.hands_events[i]
 		match event["type"]:
 			"start":
 				var hand = hand_map[event["hand_id"]]
@@ -41,12 +42,21 @@ func serialize():
 				var hand = hand_map[event["hand_id"]]
 				positions[hand["id"]] = ((int(positions[hand["id"]] + hand["stride"]) % 60) + 60) % 60
 				print("PP: ", positions)
-				if not note_times.has(event["time"]):
-					for other in positions:
-						if other != hand["id"] and positions[other] == positions[hand["id"]]:
-							notes.append({ "id": notes.size()+1, "time": event["time"] })
-							note_times.append(event["time"])
-							break
+				#if not note_times.has(event["time"]):
+					#for other in positions:
+						#if other != hand["id"] and positions[other] == positions[hand["id"]]:
+							#notes.append({ "id": notes.size()+1, "time": event["time"] })
+							#note_times.append(event["time"])
+							#break
+		if i == hands.hands_events.size()-1 or event["time"] != hands.hands_events[i+1]["time"]:
+			var found := false
+			for note1 in positions:
+				for note2 in positions:
+					if note1 != note2 and positions[note1] == positions[note2]:
+						notes.append({ "id": notes.size()+1, "time": event["time"] })
+						found = true
+						break
+				if found: break
 	
 	return {
 		"title": "song",

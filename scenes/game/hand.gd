@@ -20,6 +20,10 @@ class_name GameHand
 @onready var current_tick: int = initial_offset
 
 
+func _ready() -> void:
+	rotation_degrees = 6 * initial_offset
+
+
 func _draw():
 	var from = Vector2.ZERO
 	var to = Vector2(0, -hands.radius * length)
