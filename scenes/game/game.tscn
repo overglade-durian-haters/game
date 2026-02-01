@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfkc4a63t74qq"]
+[gd_scene load_steps=11 format=3 uid="uid://bfkc4a63t74qq"]
 
 [ext_resource type="Script" uid="uid://drk4c8wmp82ax" path="res://scenes/game/hands.gd" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://de5maxgl3tljw" path="res://scenes/game/game.gd" id="1_kelw5"]
@@ -8,6 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://dqsf0q8tcjq44" path="res://scenes/menu/pause.tscn" id="6_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://dc01fvxkslqib" path="res://scenes/menu/countdown.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://cxfpytscooaui" path="res://scenes/menu/summary.tscn" id="8_87uf6"]
+[ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="9_2a8rs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a8rs"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.35156304, 0.35156283, 0.35156286, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("conductor", "hands", "pause_menu")]
 script = ExtResource("1_kelw5")
@@ -56,3 +69,24 @@ visible = false
 
 [node name="summary" parent="menus" instance=ExtResource("8_87uf6")]
 visible = false
+
+[node name="fadeout" type="Panel" parent="menus"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_2a8rs")
+
+[node name="background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="bg" type="Panel" parent="background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2a8rs")

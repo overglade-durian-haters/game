@@ -49,12 +49,13 @@ func end(finished: bool) -> void:
 		$menus/summary.set_text(GameState.stats['percentage_overall'], GameState.stats['max_combo'], GameState.stats['combo'], GameState.stats['misses'])
 		$menus/summary.enter()
 	else:
+		var size = %fadeout.size.y
+		%fadeout.size.y = 0
+		%fadeout.visible = true
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_EXPO)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(%fadeout, "size:y", size, 0.2)
+		await tween.finished
 		SceneManager.change_scene("menu")
 	ended = true
-
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		if get_tree().paused:
-			pause_menu.unpause()
-		else:
-			pause_menu.pause()

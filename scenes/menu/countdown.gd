@@ -1,6 +1,9 @@
 extends Control
 
+var counting: bool = false
+
 func start_countdown(): 
+	counting = true
 	visible = true
 	_countdown(0)
 	
@@ -20,6 +23,7 @@ func _countdown(idx : int):
 		_countdown(idx+1)
 	else:
 		get_tree().paused = false
+		counting = false
 		visible = false
 
 	

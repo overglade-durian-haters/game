@@ -5,7 +5,17 @@ var duration := 0.2
 
 var tween: Tween
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if get_tree().paused:
+			unpause()
+		else:
+			pause()
+
+
 func pause() -> void:
+	if $"../countdown".counting:
+		return
 	print("pause")
 	get_tree().paused = true
 	position.x = -size.x
@@ -17,6 +27,8 @@ func pause() -> void:
 	tween.tween_property(self, "position:x", 0, duration)
 
 func unpause() -> void:
+	if $"../countdown".counting:
+		return
 	print("unpause")
 	#get_tree().paused = false
 	if tween: tween.kill()
@@ -34,4 +46,4 @@ func _on_resume_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	get_tree().paused = false
-	SceneManager.change_scene("menu")
+	$"../..".end(false)
