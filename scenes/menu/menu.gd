@@ -29,7 +29,7 @@ func _on_play_pressed() -> void:
 		]
 	}
 	GameState.music_path = "res://assets/audio/calibration.wav"
-	SceneManager.change_scene("game")
+	SceneManager.change_scene("level_select")
 
 
 func _on_settings_pressed() -> void:

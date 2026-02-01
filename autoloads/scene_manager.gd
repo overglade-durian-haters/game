@@ -4,7 +4,8 @@ const SCENES = {
 	"game": "res://scenes/game/game.tscn",
 	"menu": "res://scenes/menu/menu.tscn",
 	"settings": "res://scenes/settings/settings.tscn",
-	"level_editor": "res://scenes/leveL_editor/level_editor.tscn"
+	"level_editor": "res://scenes/leveL_editor/level_editor.tscn",
+	"level_select": "res://scenes/level_select/level_select.tscn"
 }
 
 
