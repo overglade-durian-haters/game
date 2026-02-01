@@ -55,7 +55,12 @@ func _ready() -> void:
 	var stream = AudioStreamWAV.load_from_file(GameState.music_path)
 	conductor.set_audio(stream)
 	conductor.unpause()
-
+	# bg
+	if GameState.use_bg:
+		var scene = load(GameState.bg_path)
+		var node = scene.instantiate()
+		$background.add_child(node)
+		$background/bg.visible = false
 	#Health setup
 	health_ui.max_value = max_health
 	health = max_health

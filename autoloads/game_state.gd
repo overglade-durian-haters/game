@@ -4,6 +4,8 @@ var level: Dictionary
 var music_path: String = "res://assets/audio/calibration.wav"
 var use_image: bool = false
 var image_path: String = "res://icon.svg"
+var use_bg: bool = false
+var bg_path: String
 var hand_tween_time: float = 0.05
 
 var editor_count := 0

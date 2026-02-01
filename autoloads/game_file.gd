@@ -13,6 +13,7 @@ func load_level(path: String):
 	music_file.store_buffer(music_data)
 	music_file.close()
 	GameState.use_image = false
+	GameState.use_bg = false
 	if reader.file_exists("icon.png"):
 		var image_data = reader.read_file("icon.png")
 		var image_file = FileAccess.open("user://tmp.png", FileAccess.WRITE)
@@ -20,6 +21,14 @@ func load_level(path: String):
 		image_file.close()
 		GameState.image_path = "user://tmp.png"
 		GameState.use_image = true
+	if reader.file_exists("bg.tscn"):
+		var bg_data = reader.read_file("bg.tscn")
+		var bg_file = FileAccess.open("user://tmp.tscn", FileAccess.WRITE)
+		bg_file.store_buffer(bg_data)
+		bg_file.close()
+		GameState.bg_path = "user://tmp.tscn"
+		GameState.use_bg = true
+	
 	
 	GameState.level = level
 	GameState.music_path = "user://tmp.wav"
