@@ -1,14 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfkc4a63t74qq"]
+[gd_scene load_steps=16 format=3 uid="uid://bfkc4a63t74qq"]
 
 [ext_resource type="Script" uid="uid://drk4c8wmp82ax" path="res://scenes/game/hands.gd" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://de5maxgl3tljw" path="res://scenes/game/game.gd" id="1_kelw5"]
 [ext_resource type="Script" path="res://scenes/game/input.gd" id="2_kelw5"]
 [ext_resource type="Script" uid="uid://s4j765e0is6s" path="res://scripts/conductor.gd" id="3_0sr1o"]
 [ext_resource type="Script" uid="uid://cy4axvv5kvnwb" path="res://scenes/game/notes.gd" id="3_lfrn8"]
+[ext_resource type="Texture2D" uid="uid://dt6br0e5vp8rq" path="res://assets/images/confetti.png" id="6_4j704"]
 [ext_resource type="PackedScene" uid="uid://dqsf0q8tcjq44" path="res://scenes/game/pause.tscn" id="6_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://dc01fvxkslqib" path="res://scenes/game/countdown.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://cxfpytscooaui" path="res://scenes/game/summary.tscn" id="8_87uf6"]
 [ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="9_2a8rs"]
+
+[sub_resource type="Curve" id="Curve_kp23o"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5jirj"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2a8rs"]
 
@@ -73,6 +84,7 @@ position = Vector2(501, 223)
 position = Vector2(1200, 688)
 emitting = false
 amount = 200
+texture = ExtResource("6_4j704")
 lifetime = 4.0
 one_shot = true
 explosiveness = 0.96
@@ -92,11 +104,13 @@ scale_amount_max = 1.2
 color = Color(0, 2.594, 4.005, 1)
 hue_variation_min = -1.0
 hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_kp23o")
 
 [node name="confetti2" type="CPUParticles2D" parent="."]
 position = Vector2(-224, 672)
 emitting = false
 amount = 200
+texture = ExtResource("6_4j704")
 lifetime = 4.0
 one_shot = true
 explosiveness = 0.97
@@ -116,6 +130,7 @@ scale_amount_max = 1.2
 color = Color(0, 2.594, 4.005, 1)
 hue_variation_min = -1.0
 hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_5jirj")
 
 [node name="menus" type="CanvasLayer" parent="."]
 process_mode = 3
