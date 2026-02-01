@@ -27,7 +27,7 @@ func process():
 
 
 func spawn_hand(event: Dictionary):
-	var id = event["id"]
+	var id = int(event["id"])
 	var hand = GameHand.new()
 	hand.bpm = event["bpm"]
 	hand.stride = event["stride"]

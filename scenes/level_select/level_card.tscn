@@ -106,3 +106,5 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("4_lut8r")
 text = "Play"
+
+[connection signal="button_up" from="VBoxContainer/play" to="." method="_on_play_button_up"]

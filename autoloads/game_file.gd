@@ -12,6 +12,14 @@ func load_level(path: String):
 	var music_file = FileAccess.open("user://tmp.wav", FileAccess.WRITE)
 	music_file.store_buffer(music_data)
 	music_file.close()
+	GameState.use_image = false
+	if reader.file_exists("icon.png"):
+		var image_data = reader.read_file("icon.png")
+		var image_file = FileAccess.open("user://tmp.png", FileAccess.WRITE)
+		image_file.store_buffer(image_data)
+		image_file.close()
+		GameState.icon_path = "user://tmp.png"
+		GameState.use_image = true
 	
 	GameState.level = level
 	GameState.music_path = "user://tmp.wav"

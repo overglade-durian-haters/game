@@ -14,5 +14,5 @@ func set_txt(title: String, author: String) -> void:
 	%title.text = title
 	%author.text = author
 
-# TODO set level data function
-# enable button when level data is present
+func _on_play_button_up() -> void:
+	SceneManager.change_scene("game")
