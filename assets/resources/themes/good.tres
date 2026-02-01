@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://b1ma6lppmv7qs"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://b1ma6lppmv7qs"]
 
 [ext_resource type="FontFile" uid="uid://dspt8oan81kdr" path="res://assets/fonts/Righteous-Regular.ttf" id="1_2wfrt"]
 [ext_resource type="FontFile" uid="uid://dq1nhpf7cww06" path="res://assets/fonts/SpaceGrotesk-Bold.ttf" id="2_8tbei"]
@@ -33,6 +33,13 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtlwo"]
 bg_color = Color(0.83137256, 0.8745098, 0.78039217, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5a4g"]
+bg_color = Color(0.5882353, 0.7529412, 0.7176471, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -115,6 +122,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_q1pu2")
 Button/styles/normal = SubResource("StyleBoxFlat_2wfrt")
 Button/styles/pressed = SubResource("StyleBoxFlat_1owqq")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_rtlwo")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_v5a4g")
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_2wfrt")
 LineEdit/font_sizes/font_size = 24

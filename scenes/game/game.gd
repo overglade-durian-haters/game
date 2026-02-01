@@ -8,10 +8,10 @@ extends Node2D
 @onready var events = GameState.level["events"]
 
 var event_index = 0
-
+var ended: bool
 
 func _ready() -> void:
-	GameState.stats['num_notes'] = events.size()
+	GameState.stats['num_notes'] = events.size() + 1
 	conductor.volume_linear = Settings.master_volume * Settings.music_volume
 	var stream = AudioStreamWAV.load_from_file(GameState.music_path)
 	conductor.set_audio(stream)
@@ -19,6 +19,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if ended:
+		return
 	if not conductor.playing:
 		end(true)
 	var pos = conductor.playback_pos - Settings.offset/1000.0
@@ -43,11 +45,12 @@ func end(finished: bool) -> void:
 		GameState.stats['percentage_score'] = GameState.stats['score'] / float(GameState.tiers[0]['score'] * GameState.stats['num_notes'])
 		GameState.stats['percentage_overall'] = GameState.stats['percentage_notes'] * 0.75 + GameState.stats['percentage_score'] * 0.25
 		GameState.stats['percentage_overall'] = clamp(GameState.stats['percentage_overall'], 0.0, 1.0)
-		print(GameState.stats)
+		print("final stats:", GameState.stats)
 		$menus/summary.set_text(GameState.stats['percentage_overall'], GameState.stats['max_combo'], GameState.stats['combo'], GameState.stats['misses'])
 		$menus/summary.enter()
 	else:
 		SceneManager.change_scene("menu")
+	ended = true
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
