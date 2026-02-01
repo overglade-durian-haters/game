@@ -18,9 +18,37 @@ var last_event_time := 1e9
 var next_id = 1
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # TODO: get 
+	call_deferred("_init_from_game_state")
+
+
+func _init_from_game_state() -> void:
+	var pending_hands: Dictionary[int, Dictionary] = {}
+	var events = GameState.level.get("events", [])
+	for event in events:
+		match event["type"]:
+			"spawn_hand":
+				var id = int(event["id"])
+				pending_hands[id] = {
+					"id": id,
+					"bpm": event["bpm"],
+					"initial_offset": int(event["initial_offset"]),
+					"stride": int(event["stride"]),
+					"start_time": event["time"]
+				}
+				next_id = max(id+1, next_id)
+			"remove_hand":
+				var id = int(event["id"])
+				var hand = pending_hands[id]
+				if hand:
+					pending_hands.erase(id)
+					hand["end_time"] = event["time"]
+					hands.append(hand)
+	for id in pending_hands:
+		var hand = pending_hands[id]
+		hand["end_time"] = conductor.audio.get_length()
+		hands.append(hand)
+	update_children()
 
 
 func _process(_delta: float) -> void:
@@ -61,6 +89,7 @@ func update_children():
 		child.end_time = hand["end_time"]
 		child.bpm = hand["bpm"]
 		child.stride = hand["stride"]
+		child.initial_offset = hand["initial_offset"]
 		child.edit.connect(_on_edit_hand)
 		child.delete.connect(_on_delete_hand)
 		container.add_child(child)

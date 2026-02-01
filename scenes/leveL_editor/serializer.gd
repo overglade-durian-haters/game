@@ -3,6 +3,7 @@ extends Node
 @export var hands: EditorHandsHandler
 
 @export var level_saver: FileSaver
+@export var level_loader: FilePicker
 
 
 func serialize():
@@ -56,3 +57,12 @@ func _on_save_pressed() -> void:
 	GameFile.save_level("user://tmp.zip")
 	var data = FileAccess.get_file_as_bytes("user://tmp.zip")
 	level_saver.save(data, "level.zip", "application/zip", "Game file")
+
+
+func _on_load_pressed() -> void:
+	level_loader.pick()
+
+
+func _on_level_loader_selected(path: String) -> void:
+	GameFile.load_level(path)
+	get_tree().reload_current_scene()

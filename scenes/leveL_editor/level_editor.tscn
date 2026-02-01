@@ -32,7 +32,7 @@ font_size = 36
 [sub_resource type="LabelSettings" id="LabelSettings_e2nhn"]
 font_size = 24
 
-[node name="LevelEditor" type="Control" node_paths=PackedStringArray("conductor", "music_picker")]
+[node name="LevelEditor" type="Control" node_paths=PackedStringArray("conductor", "serializer", "music_picker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q16wl")
 conductor = NodePath("Conductor")
+serializer = NodePath("Serializer")
 music_picker = NodePath("MusicPicker")
 
 [node name="Conductor" type="AudioStreamPlayer" parent="."]
@@ -61,15 +62,19 @@ bpm_input = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents/
 edit_handler = NodePath("../Edit")
 container = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents")
 
-[node name="Serializer" type="Node" parent="." node_paths=PackedStringArray("hands", "level_saver")]
+[node name="Serializer" type="Node" parent="." node_paths=PackedStringArray("hands", "level_saver", "level_loader")]
 script = ExtResource("5_e2nhn")
 hands = NodePath("../HandsHandler")
 level_saver = NodePath("../LevelSaver")
+level_loader = NodePath("../LevelLoader")
 
 [node name="MusicPicker" parent="." instance=ExtResource("4_tt74g")]
 
 [node name="LevelSaver" parent="." instance=ExtResource("7_d1u2b")]
 layout_mode = 1
+
+[node name="LevelLoader" parent="." instance=ExtResource("4_tt74g")]
+filter = "*.zip;Level files;application/zip"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -121,6 +126,10 @@ text = "Save"
 [node name="Load" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/HBoxContainer"]
 layout_mode = 2
 text = "Load"
+
+[node name="Preview" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/HBoxContainer"]
+layout_mode = 2
+text = "Preview"
 
 [node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4"]
 layout_mode = 2
@@ -309,7 +318,10 @@ layout_mode = 2
 text = "Close"
 
 [connection signal="selected" from="MusicPicker" to="." method="_on_music_picker_selected"]
+[connection signal="selected" from="LevelLoader" to="Serializer" method="_on_level_loader_selected"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/HBoxContainer/Save" to="Serializer" method="_on_save_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/HBoxContainer/Load" to="Serializer" method="_on_load_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/HBoxContainer/Preview" to="." method="_on_preview_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer4/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/Backward" to="MusicControl" method="_on_backward_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/PlayPuase" to="MusicControl" method="_on_play_puase_pressed"]

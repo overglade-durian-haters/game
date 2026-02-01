@@ -1,6 +1,7 @@
 extends Control
 
 @export var conductor: Conductor
+@export var serializer: Node
 
 @export var music_picker: FilePicker
 
@@ -21,3 +22,8 @@ func _on_music_picker_selected(path: String) -> void:
 
 func _on_back_pressed() -> void:
 	SceneManager.change_scene("menu")
+
+
+func _on_preview_pressed() -> void:
+	GameState.level = serializer.serialize()
+	SceneManager.change_scene("game")
