@@ -1,14 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfkc4a63t74qq"]
+[gd_scene load_steps=15 format=3 uid="uid://bfkc4a63t74qq"]
 
 [ext_resource type="Script" uid="uid://drk4c8wmp82ax" path="res://scenes/game/hands.gd" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://de5maxgl3tljw" path="res://scenes/game/game.gd" id="1_kelw5"]
-[ext_resource type="Script" uid="uid://dwsq1sriqp4io" path="res://scenes/game/input.gd" id="2_kelw5"]
+[ext_resource type="Script" path="res://scenes/game/input.gd" id="2_kelw5"]
 [ext_resource type="Script" uid="uid://s4j765e0is6s" path="res://scripts/conductor.gd" id="3_0sr1o"]
 [ext_resource type="Script" uid="uid://cy4axvv5kvnwb" path="res://scenes/game/notes.gd" id="3_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://dqsf0q8tcjq44" path="res://scenes/game/pause.tscn" id="6_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://dc01fvxkslqib" path="res://scenes/game/countdown.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://cxfpytscooaui" path="res://scenes/game/summary.tscn" id="8_87uf6"]
 [ext_resource type="Theme" uid="uid://b1ma6lppmv7qs" path="res://assets/resources/themes/good.tres" id="9_2a8rs"]
+[ext_resource type="Texture2D" uid="uid://dt6br0e5vp8rq" path="res://assets/images/confetti.png" id="10_4j704"]
+
+[sub_resource type="Gradient" id="Gradient_4j704"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_kp23o"]
+colors = PackedColorArray(0.5931336, 0.59313357, 0.59313357, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_5jirj"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+bake_resolution = 1
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a8rs"]
 content_margin_left = 0.0
@@ -50,6 +63,62 @@ conductor = NodePath("../Conductor")
 
 [node name="tierSpawn" type="Marker2D" parent="."]
 position = Vector2(501, 223)
+
+[node name="confetti" type="CPUParticles2D" parent="."]
+position = Vector2(1200, 688)
+emitting = false
+amount = 200
+texture = ExtResource("10_4j704")
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.96
+randomness = 1.0
+direction = Vector2(-0.4, -1)
+spread = 20.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 257.73
+initial_velocity_max = 1000.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+damping_min = 94.845
+damping_max = 94.845
+angle_min = -720.0
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color = Color(0, 2.594, 4.005, 1)
+color_ramp = SubResource("Gradient_4j704")
+color_initial_ramp = SubResource("Gradient_kp23o")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_5jirj")
+
+[node name="confetti2" type="CPUParticles2D" parent="."]
+position = Vector2(-224, 672)
+emitting = false
+amount = 200
+texture = ExtResource("10_4j704")
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.97
+randomness = 1.0
+direction = Vector2(0.4, -1)
+spread = 20.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 257.73
+initial_velocity_max = 1000.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+damping_min = 94.845
+damping_max = 94.845
+angle_min = -720.0
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color = Color(0, 2.594, 4.005, 1)
+color_ramp = SubResource("Gradient_4j704")
+color_initial_ramp = SubResource("Gradient_kp23o")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_5jirj")
 
 [node name="menus" type="CanvasLayer" parent="."]
 

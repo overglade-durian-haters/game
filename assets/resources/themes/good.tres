@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dq1nhpf7cww06" path="res://assets/fonts/SpaceGrotesk-Bold.ttf" id="2_8tbei"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxt4s"]
-bg_color = Color(0.06879826, 0.06879829, 0.06879823, 1)
+bg_color = Color(0.0483, 0.060235, 0.07, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
