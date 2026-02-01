@@ -3,6 +3,7 @@ extends Node
 var level: Dictionary
 var music_path: String = "res://assets/audio/calibration.wav"
 var hand_tween_time: float = 0.05
+var selected_level
 
 var editor_count := 0
 

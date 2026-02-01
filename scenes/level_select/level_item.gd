@@ -1,5 +1,7 @@
 extends Button
 
+var data: Dictionary
+
 func _ready() -> void:
 	%icon.visible = false
 
