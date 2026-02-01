@@ -18,7 +18,7 @@ func load_level(path: String):
 		var image_file = FileAccess.open("user://tmp.png", FileAccess.WRITE)
 		image_file.store_buffer(image_data)
 		image_file.close()
-		GameState.icon_path = "user://tmp.png"
+		GameState.image_path = "user://tmp.png"
 		GameState.use_image = true
 	
 	GameState.level = level

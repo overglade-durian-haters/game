@@ -71,6 +71,7 @@ stretch_mode = 4
 
 [node name="icon" type="TextureRect" parent="VBoxContainer/Panel"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("2_8shjn")
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 1

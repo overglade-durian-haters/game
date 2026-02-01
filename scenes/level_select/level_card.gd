@@ -4,7 +4,7 @@ func _ready() -> void:
 	%icon.visible = false
 
 func set_image(image: String) -> void:
-	%icon.texture = image
+	%icon.texture = ImageTexture.create_from_image(Image.load_from_file(image))
 	%icon.visible = true
 
 func clear_image() -> void:

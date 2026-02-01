@@ -18,5 +18,7 @@ func _ready() -> void:
 		item.index = i
 		item.data = GameState.level
 		item.path = level
+		if GameState.use_image:
+			item.set_image(GameState.image_path)
 		%levelitems.add_child(item)
 		

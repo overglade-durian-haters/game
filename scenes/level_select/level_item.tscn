@@ -29,6 +29,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="icon" type="TextureRect" parent="HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("2_34p2k")
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
