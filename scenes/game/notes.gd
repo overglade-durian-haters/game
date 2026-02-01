@@ -32,6 +32,7 @@ func _on_hit() -> void:
 			if index == tiers.size() - 1:
 				game.stats['combo'] = 0
 				game.stats['misses'] += 1
+				game.damage_health()
 			else:
 				game.stats['combo'] += 1
 				if game.stats['max_combo'] < game.stats['combo']: game.stats['max_combo'] = game.stats['combo']
@@ -47,6 +48,7 @@ func _process(_delta: float) -> void:
 		var note = notes[note_index]
 		var diff = conductor.playback_pos - Settings.offset/1000.0 - note["time"]
 		_spawn_tier(miss_tier["tier"], diff, miss_tier["color"])
+		game.damage_health()
 		note_index += 1
 
 

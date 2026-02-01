@@ -7,6 +7,23 @@ extends Node2D
 @onready var title = GameState.level["title"]
 @onready var events = GameState.level["events"]
 
+#region Health Variables
+@export var max_health := 100
+var health : float:
+	set(value):
+		health_modified(value, value-health)
+		health = clampf(max_health, 0, value)
+		if value <= 0:
+			game_failed()
+@export var health_ui : ProgressBar
+
+@export var health_regen := 5.0
+@export var health_regen_cooldown := 1.0
+var curr_health_regen_cooldown = 0
+
+@export var damage_amount := 0.0
+#endregion
+
 var event_index = 0
 var ended: bool
 
@@ -39,9 +56,13 @@ func _ready() -> void:
 	conductor.set_audio(stream)
 	conductor.unpause()
 
+	#Health setup
+	health_ui.max_value = max_health
+	health = max_health
+
 func _hide_fadeout() -> void: %fadeout.visible = false
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if ended:
 		return
 	if not conductor.playing:
@@ -59,6 +80,15 @@ func _process(_delta: float) -> void:
 				hands.remove_hand(event["id"])
 		event_index += 1
 	hands.process()
+
+	#health stuff
+	print(curr_health_regen_cooldown)
+	if curr_health_regen_cooldown > 0.0:
+		curr_health_regen_cooldown -= delta
+	else:
+		health += health_regen*delta
+
+
 
 func end(finished: bool) -> void:
 	if finished:
@@ -90,3 +120,25 @@ func end(finished: bool) -> void:
 		else:
 			SceneManager.change_scene("menu")
 	ended = true
+
+func health_modified(val: float, delta : float):
+	health_ui.value = val
+	if delta < 0:
+		print("aeraeaeaerae")
+		curr_health_regen_cooldown = health_regen_cooldown
+
+func damage_health():
+	print("damaged!")
+	health -= damage_amount
+
+func game_failed():
+	var tween := create_tween()
+	tween.tween_property(Engine, "time_scale", 0.01, 0.25)
+	tween.tween_callback(func():
+		ended = true
+		Engine.time_scale = 1
+		$Conductor.pause()
+		$menus/summary.set_text(stats['percentage_overall'], stats['max_combo'], stats['combo'], stats['misses'], true)
+		$menus/summary.enter()
+	)
+	##TODO: Implement Game Failed UI
