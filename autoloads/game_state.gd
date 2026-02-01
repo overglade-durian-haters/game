@@ -1,7 +1,7 @@
 extends Node
 
 var level: Dictionary
-var music_path: String
+var music_path: String = "res://assets/audio/calibration.wav"
 
 var stats: Dictionary = {
 	'score' = 0,

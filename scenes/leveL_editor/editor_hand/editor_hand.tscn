@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://doeajefq0ufyl"]
+
+[ext_resource type="Script" uid="uid://4u58gpaowhbm" path="res://scenes/leveL_editor/editor_hand/editor_hand.gd" id="1_wk1hp"]
+[ext_resource type="StyleBox" uid="uid://c74nkhxd7kf1l" path="res://scenes/leveL_editor/editor_hand/editor_hand_normal.tres" id="1_x550v"]
+
+[node name="EditorHand" type="PanelContainer" node_paths=PackedStringArray("times_label", "info_label")]
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_styles/panel = ExtResource("1_x550v")
+script = ExtResource("1_wk1hp")
+times_label = NodePath("HBoxContainer/VBoxContainer/Times")
+info_label = NodePath("HBoxContainer/VBoxContainer/Info")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Times" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "00:00.00 - 00:00.00"
+
+[node name="Info" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "60 BPM, +5 stride"
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Edit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Edit"
+
+[node name="Delete" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Delete"
+
+[connection signal="pressed" from="HBoxContainer/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="HBoxContainer/Delete" to="." method="_on_delete_pressed"]

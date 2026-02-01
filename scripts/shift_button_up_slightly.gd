@@ -13,7 +13,7 @@ func _ready() -> void:
 	#print("ready x2 ", name, " ", self.position.y)
 	origin = self.position.y
 	up = origin - distance
-	print(self, origin)
+	#print(self, origin)
 	#print(name, " ", origin, " ", up)
 
 func _on_mouse_entered() -> void:

@@ -1,0 +1,277 @@
+[gd_scene load_steps=16 format=3 uid="uid://ccpai1khv3p5i"]
+
+[ext_resource type="Script" uid="uid://o1cy8ag8n88v" path="res://scenes/leveL_editor/level_editor.gd" id="1_q16wl"]
+[ext_resource type="FontFile" uid="uid://dspt8oan81kdr" path="res://assets/fonts/Righteous-Regular.ttf" id="1_y4ir8"]
+[ext_resource type="Script" uid="uid://bvvcd4qpyp10w" path="res://scenes/leveL_editor/music_control.gd" id="2_327rd"]
+[ext_resource type="Script" uid="uid://s4j765e0is6s" path="res://scripts/conductor.gd" id="2_sj3dm"]
+[ext_resource type="Script" uid="uid://cr76davmx3pqj" path="res://scenes/leveL_editor/hands_handler.gd" id="4_qcvlc"]
+[ext_resource type="PackedScene" uid="uid://dweiuwu61lyfe" path="res://scenes/components/file_picker/file_picker.tscn" id="4_tt74g"]
+[ext_resource type="Texture2D" uid="uid://2novltl7k450" path="res://assets/images/icon_backward.png" id="5_4lwdp"]
+[ext_resource type="Texture2D" uid="uid://caredmgq7hhy4" path="res://assets/images/icon_play.png" id="6_tt74g"]
+[ext_resource type="Texture2D" uid="uid://bec0qxneg27f6" path="res://assets/images/icon_forward.png" id="7_u3cbq"]
+[ext_resource type="Script" uid="uid://c2xmsppaarupu" path="res://scenes/leveL_editor/edit.gd" id="10_qcvlc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q16wl"]
+font = ExtResource("1_y4ir8")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4ir8"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_sj3dm"]
+font = ExtResource("1_y4ir8")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_bp8el"]
+font = ExtResource("1_y4ir8")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_e2nhn"]
+font_size = 24
+
+[node name="LevelEditor" type="Control" node_paths=PackedStringArray("conductor", "music_picker")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q16wl")
+conductor = NodePath("Conductor")
+music_picker = NodePath("MusicPicker")
+
+[node name="Conductor" type="AudioStreamPlayer" parent="."]
+script = ExtResource("2_sj3dm")
+metadata/_custom_type_script = "uid://s4j765e0is6s"
+
+[node name="MusicControl" type="Node" parent="." node_paths=PackedStringArray("conductor", "play_button", "progress_bar", "progress_label")]
+script = ExtResource("2_327rd")
+conductor = NodePath("../Conductor")
+play_button = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/PlayPuase")
+progress_bar = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/ProgressBar")
+progress_label = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/ProgressLabel")
+
+[node name="HandsHandler" type="Node" parent="." node_paths=PackedStringArray("conductor", "bpm_input", "edit_handler", "container")]
+script = ExtResource("4_qcvlc")
+conductor = NodePath("../Conductor")
+bpm_input = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer3/BPM")
+edit_handler = NodePath("../Edit")
+container = NodePath("../VBoxContainer/ScrollContainer/MarginContainer/Contents")
+
+[node name="MusicPicker" parent="." instance=ExtResource("4_tt74g")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Contents" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents"]
+layout_mode = 2
+text = "Level editor"
+label_settings = SubResource("LabelSettings_q16wl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer"]
+layout_mode = 2
+text = "music.wav"
+label_settings = SubResource("LabelSettings_y4ir8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer"]
+layout_mode = 2
+
+[node name="Backward" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_4lwdp")
+
+[node name="PlayPuase" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("6_tt74g")
+
+[node name="Forward" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("7_u3cbq")
+
+[node name="ProgressBar" type="HSlider" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 0.01
+
+[node name="ProgressLabel" type="Label" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "00:00.00 / 01:00.00"
+label_settings = SubResource("LabelSettings_y4ir8")
+
+[node name="Change" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer"]
+layout_mode = 2
+text = "Change"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer3"]
+layout_mode = 2
+text = "Snap BPM"
+
+[node name="BPM" type="SpinBox" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer3"]
+layout_mode = 2
+max_value = 1000.0
+value = 120.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer2"]
+layout_mode = 2
+text = "Hands"
+label_settings = SubResource("LabelSettings_sj3dm")
+
+[node name="AddHand" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Add hand"
+
+[node name="Edit" type="CanvasLayer" parent="." node_paths=PackedStringArray("conductor", "start_input", "end_input", "bpm_input", "stride_input", "close_button")]
+visible = false
+script = ExtResource("10_qcvlc")
+conductor = NodePath("../Conductor")
+start_input = NodePath("Panel/VBoxContainer/GridContainer/Start")
+end_input = NodePath("Panel/VBoxContainer/GridContainer/End")
+bpm_input = NodePath("Panel/VBoxContainer/GridContainer/BPM")
+stride_input = NodePath("Panel/VBoxContainer/GridContainer/Stride")
+close_button = NodePath("Panel/VBoxContainer/HBoxContainer/Close")
+
+[node name="Panel" type="Panel" parent="Edit"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Edit/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Edit/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Edit hand"
+label_settings = SubResource("LabelSettings_bp8el")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Edit/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="Label" type="Label" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Start time"
+label_settings = SubResource("LabelSettings_e2nhn")
+
+[node name="Start" type="SpinBox" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.0
+
+[node name="Label2" type="Label" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "End time"
+label_settings = SubResource("LabelSettings_e2nhn")
+
+[node name="End" type="SpinBox" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.0
+value = 1.0
+
+[node name="Label3" type="Label" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "BPM"
+label_settings = SubResource("LabelSettings_e2nhn")
+
+[node name="BPM" type="SpinBox" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000.0
+step = 0.0
+value = 120.0
+
+[node name="Label4" type="Label" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Stride"
+label_settings = SubResource("LabelSettings_e2nhn")
+
+[node name="Stride" type="SpinBox" parent="Edit/Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+min_value = -59.0
+max_value = 59.0
+value = 5.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Edit/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Close" type="Button" parent="Edit/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="selected" from="MusicPicker" to="." method="_on_music_picker_selected"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/Backward" to="MusicControl" method="_on_backward_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/PlayPuase" to="MusicControl" method="_on_play_puase_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/HBoxContainer/Forward" to="MusicControl" method="_on_forward_pressed"]
+[connection signal="drag_ended" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/ProgressBar" to="MusicControl" method="_on_progress_bar_drag_ended"]
+[connection signal="drag_started" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/ProgressBar" to="MusicControl" method="_on_progress_bar_drag_started"]
+[connection signal="value_changed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/ProgressBar" to="MusicControl" method="_on_progress_bar_value_changed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer/Change" to="." method="_on_change_music_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/MarginContainer/Contents/HBoxContainer2/AddHand" to="HandsHandler" method="_on_add_hand_pressed"]
+[connection signal="updated" from="Edit" to="HandsHandler" method="_on_hand_edited"]
+[connection signal="value_changed" from="Edit/Panel/VBoxContainer/GridContainer/Start" to="Edit" method="_on_edited"]
+[connection signal="value_changed" from="Edit/Panel/VBoxContainer/GridContainer/End" to="Edit" method="_on_edited"]
+[connection signal="value_changed" from="Edit/Panel/VBoxContainer/GridContainer/BPM" to="Edit" method="_on_edited"]
+[connection signal="value_changed" from="Edit/Panel/VBoxContainer/GridContainer/Stride" to="Edit" method="_on_edited"]
+[connection signal="pressed" from="Edit/Panel/VBoxContainer/HBoxContainer/Close" to="Edit" method="_on_close_pressed"]
